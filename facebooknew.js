@@ -1,6 +1,6 @@
 var modal = document.getElementById('myModal');
-var face = document.getElementById("myBtn");
-face.onclick = function() {
+var facebook_btn = document.getElementById("myBtn");
+facebook_btn.onclick = function() {
     modal.style.display = "block";
 }
 window.onclick = function(event) {
@@ -8,6 +8,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
 
 //Getting API Key//
 var APPID = "9255cdccfab1422f15ed5016615fc92b";
@@ -29,28 +30,32 @@ function update(weather) {
     main.innerHTML = weather.main;
 }
 
+facebook_btn.onclick = function(myfunc) {
 
-window.onload = function() {
-        temp = document.getElementById("temperature");
-        loc = document.getElementById("location");
-        icon = document.getElementById("icon");
-        humidity = document.getElementById("humidity");
-        lat = document.getElementById("lat");
-        pressure = document.getElementById("pressure");
+    temp = document.getElementById("temperature");
+    loc = document.getElementById("location");
+    icon = document.getElementById("icon");
+    humidity = document.getElementById("humidity");
+    lat = document.getElementById("lat");
+    pressure = document.getElementById("pressure");
 
-        main = document.getElementById("main");
-        /* NEW */
-        if (navigator.geolocation) {
-            var showPosition = function(position) {
-                updateByGeo(position.coords.latitude, position.coords.longitude);
-            }
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            var zip = window.prompt("Could not discover your location. What is your zip code?");
-            updateByZip(zip);
-        }
-    }
+    main = document.getElementById("main");
     /* NEW */
+    if (navigator.geolocation) {
+        var showPosition = function(position) {
+            updateByGeo(position.coords.latitude, position.coords.longitude);
+        }
+        navigator.geolocation.getCurrentPosition(showPosition);
+        modal.style.display = "block";
+    } else {
+        /* var zip = window.prompt("Could not discover your location. What is your zip code?");
+        updateByZip(zip); */
+        modal.style.display = "none";
+    }
+
+}
+
+/* NEW */
 
 function updateByGeo(lat, lon) {
     var url = "http://api.openweathermap.org/data/2.5/weather?" +
@@ -281,16 +286,31 @@ function button1() {
     localStorage.clear();
 }
 
-
-
-function button2(myform) {
+function button2() {
     var asd;
     asd = new FormData(document.forms.myform);
-    /*  console.log(asd.values().length); */
     for (let value of asd.values()) {
-        /*  console.log(value); */
 
-        if (value == false) {
+        var a = document.getElementById("firstname").value;
+        var b = document.getElementById("lastname").value;
+        var c = document.getElementById("age").value;
+        var d = document.getElementById("dob").value;
+        var e = document.getElementById("email").value;
+        var f = document.getElementById("crosscheck").value;
+        var g = document.getElementById("goal").value;
+        var h = document.getElementById("hob").value;
+
+        if (value != "") {
+            myObj = { "FirstName": document.getElementById("firstname").value, "LastName": document.getElementById("lastname").value, "age": document.getElementById("age").value, "dob": document.getElementById("dob").value, "email_id": document.getElementById("email").value, "Life_Goals": document.getElementById("goal").value, "Hobby": document.getElementById("hob").value }
+            myJSON = JSON.stringify(myObj);
+            localStorage.setItem("testJSON", myJSON);
+            text = localStorage.getItem("testJSON");
+            obj = JSON.parse(text);
+            console.log(document.getElementById("firstname").value);
+            document.getElementById("firstname").value === obj.FirstName;
+
+        } else if ((a != true) || (b != true) || (c != true) || (d != true) || (e != true) || (f != true) || (g != true) || (h != true) || (a == "") || (b == "") || (c == "") || (d == "") || (e == "") || (f == "") || (g == "") || (h == "")) {
+
             document.getElementById("mydiv").style.display = "block";
             document.getElementById("check1").innerText = "Please fill your First_Name";
             document.getElementById("check2").innerText = "Please fill your Last_Name";
@@ -299,10 +319,6 @@ function button2(myform) {
             document.getElementById("check5").innerText = "Please fill your email ";
             document.getElementById("check6").innerText = "Please fill your Life Goals";
             document.getElementById("check7").innerText = "Please fill your Hobbies";
-            localStorage.clear();
-        } else if (value == "") {
-            document.getElementById("mydiv").style.display = "block";
-            document.getElementById("division").style.display = "block";
         } else {
             document.getElementById("mydiv").style.display = "none";
             document.getElementById("check1").style.display = "none";
@@ -312,34 +328,9 @@ function button2(myform) {
             document.getElementById("check5").style.display = "none";
             document.getElementById("check6").style.display = "none";
             document.getElementById("check7").style.display = "none";
-            var dataToSave = document.getElementById('firstname').value;
-            localStorage.setItem("FirstName", dataToSave);
-            localStorage.getItem("FirstName");
-            var dataToSave = document.getElementById('lastname').value;
-            localStorage.setItem("LastName", dataToSave);
-            localStorage.getItem("LastName");
-            var dataToSave = document.getElementById('dob').value;
-            localStorage.setItem("DOB", dataToSave);
-            localStorage.getItem("DOB");
-            var dataToSave = document.getElementById('age').value;
-            localStorage.setItem("Age", dataToSave);
-            localStorage.getItem("Age");
-            var dataToSave = document.getElementById('email').value;
-            localStorage.setItem("Email", dataToSave);
-            localStorage.getItem("Email");
-            var dataToSave = document.getElementById('goal').value;
-            localStorage.setItem("Goals", dataToSave);
-            localStorage.getItem("Goals");
-            var dataToSave = document.getElementById('hob').value;
-            localStorage.setItem("Hobby", dataToSave);
-            localStorage.getItem("Hobby");
         }
     }
 }
-
-
-
-
 var a = document.getElementById("close");
 var b = document.getElementById("mydiv")
 a.onclick = function() {

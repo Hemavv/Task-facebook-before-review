@@ -7,7 +7,7 @@
 
 <body>
     <div class="header">
-        <button class="face" id="myBtn"><h1>facebook</h1></button>
+        <button class="facebook_btn" id="myBtn" onload="myfunc()"><h1>facebook</h1></button>
     </div>
     <!-- Displaying the weather data in the form of modal -->
     <div id="myModal" class="modal">
@@ -15,9 +15,9 @@
             <p id="location" class="locate"></p>
             <span id="main" class="description"></span>
             <img id="icon" class="icon1" src="codes/200.png" align="right" hspace="30" vspace="50" alt="check" />
-            <table class="table1 ">
+            <table class="table1">
                 <tr>
-                    <td>
+                    <td style="background-color: white;border: none;">
                         <span id="temperature" class="temperate"></span>
                         <span class="subscript"><sup class="subscript">&#8451;</sup></span>
                     </td>
@@ -38,10 +38,11 @@
                 <tr>
                     <td> <img src="latlng.jpg" align="left" height=20>
 
-                        <span id="pressure">0</span>hpa
+                        <span id="pressure"></span>hpa
 
                     </td>
                 </tr>
+                <h1 id="nointernet" class="demo">Could not find location</h1>
             </table>
             <span class="close" id="clo"></span>
         </div>
@@ -89,7 +90,7 @@
                     <tr>
 
                         <td><label>DOB:</label></td>
-                        <td> <input type="text" name="date" id="dob" step="1" max="1997-12-31" onblur="checkdate()">
+                        <td> <input type="date" name="date" id="dob" step="1" max="1997-12-31" onblur="checkdate()">
                         </td>
                         <td><span>*</span></td>
                         <td><span id="checkdate"></span></td>
@@ -124,7 +125,7 @@
                     </tr>
                     <tr>
                         <td><label>Hobbies:</label></td>
-                        <td><input type="text" id="hob" name="hobbies" list="l2" onblur="checkhob()"><datalist id="l2">
+                        <td><input type="text" id="hob" name="hobbies" list="list" onblur="checkhob()"><datalist id="list">
                                         <option>Dancing</option>
                                         <option>Singing</option>
                                         <option>Drawing</option>
