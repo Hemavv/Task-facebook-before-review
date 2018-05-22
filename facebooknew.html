@@ -1,0 +1,178 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,height=device-height">
+    <link rel="stylesheet" href="facebooknew.css ">
+</head>
+
+<body>
+    <div class="header">
+        <button class="face" id="myBtn"><h1>facebook</h1></button>
+    </div>
+    <!-- Displaying the weather data in the form of modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p id="location" class="locate"></p>
+            <span id="main" class="description"></span>
+            <img id="icon" class="icon1" src="codes/200.png" align="right" hspace="30" vspace="50" alt="check" />
+            <table class="table1 ">
+                <tr>
+                    <td>
+                        <span id="temperature" class="temperate"></span>
+                        <span class="subscript"><sup class="subscript">&#8451;</sup></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><img src="humid.jpg" align="left" height=20><span id="humidity" float="left"></span> &percnt;
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> <img src="latlng.jpg" align="left" height=20>
+
+                        <span id="lat"></span>&deg;
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> <img src="latlng.jpg" align="left" height=20>
+
+                        <span id="pressure">0</span>hpa
+
+                    </td>
+                </tr>
+            </table>
+            <span class="close" id="clo"></span>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="side">
+            <br><br>
+            <h2>Facebook helps you connect and share with the<br> people in your life</h2>
+            <img src="face.png" style="height:200px;justify-content:flex-end;align-items: flex-end;margin-left:20%">
+        </div>
+        <div class="main">
+            <form id="myform">
+                <table>
+                    <tr>
+                        <td> <label>First_Name:</label></td>
+                        <td><input type="text" name="first" id="firstname" onblur="checkforfirstname()">
+                        </td>
+                        <td><span>*</span></td>
+                        <td>
+                            <span id="username"></span>
+                        </td>
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td><label>Last_Name:</label></td>
+                        <td>
+                            <input type="text" name="last" id="lastname" onblur="checkforlastname()">
+                        </td>
+                        <td><span>*</span></td>
+                        <td>
+                            <span id="username1"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Age:</label></td>
+                        <td>
+                            <input type="number" id="age" name="age" min="21" max="100" step="1" onblur="checkage()">
+                        </td>
+                        <td><span>*</span></td>
+                        <td><span id="checkage"></span></td>
+
+                    </tr>
+                    <tr>
+
+                        <td><label>DOB:</label></td>
+                        <td> <input type="text" name="date" id="dob" step="1" max="1997-12-31" onblur="checkdate()">
+                        </td>
+                        <td><span>*</span></td>
+                        <td><span id="checkdate"></span></td>
+
+                    </tr>
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td> <input type="email" name="email" id="email" onblur="validateemail()">
+                        </td>
+                        <td><span>*</span></td>
+                        <td>
+                            <span id="mails"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <label>Confirm:</label></td>
+                        <td> <input type="email" name="Confirmemail" id="crosscheck" onblur="confirmmail()">
+                        </td>
+                        <td><span>*</span></td>
+                        <td>
+                            <span id="con"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Life Goals:</label></td>
+                        <td> <textarea maxlength="150" id="goal" name="goals" onblur="checkgoal()"></textarea>
+                        </td>
+                        <td><span>*</span></td>
+                        <td><span id="checkgoal"></span></td>
+
+                    </tr>
+                    <tr>
+                        <td><label>Hobbies:</label></td>
+                        <td><input type="text" id="hob" name="hobbies" list="l2" onblur="checkhob()"><datalist id="l2">
+                                        <option>Dancing</option>
+                                        <option>Singing</option>
+                                        <option>Drawing</option>
+                                        <option>Painting</option>
+                                        <option>Watching Movie</option>
+                                        <option>Collecting money</option>
+                                        <option>Playing</option>
+                                        <option>Choreographing</option>
+                                </datalist>
+                        </td>
+                        <td><span>*</span></td>
+                        <td><span id="checkhob"></span></td>
+                    </tr>
+
+                </table>
+            </form>
+            <p class="btn">
+                <button class="btn1" onclick="button1()">RESET</button>
+                <button class="btn2" onclick="button2()">SUBMIT</button></p>
+            <div id="mydiv">
+                <span id="mydivheader">
+                        <span id="close" class="closing">&times;</span><br/>
+                <span style="background-color: #2196F3;"> Validation Summary</span>
+                </span>
+                <p id="check1" style="color:black;background-color: white;"></p>
+                <p id="check2" style="color:black;background-color: white;"></p>
+                <p id="check3" style="color:black;background-color: white;"></p>
+                <p id="check4" style="color:black;background-color: white;"></p>
+                <p id="check5" style="color:black;background-color: white;"></p>
+                <p id="check6" style="color:black;background-color: white;"></p>
+                <p id="check7" style="color:black;background-color: white;"></p>
+                <p id="division" style="color:black;background-color: white;"></p>
+                <p id="division1" style="color:black;background-color: white;"></p>
+                <p id="division2" style="color:black;background-color: white;"></p>
+                <p id="division3" style="color:black;background-color: white;"></p>
+                <p id="division4" style="color:black;background-color: white;"></p>
+                <p id="division5" style="color:black;background-color: white;"></p>
+                <p id="division6" style="color:black;background-color: white;"></p>
+                <p id="division7" style="color:black;background-color: white;"></p>
+            </div>
+
+
+            <script type="text/javascript" src="facebooknew.js"></script>
+
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
